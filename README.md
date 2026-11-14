@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Logos/CaLabs_logo_completo_transparente.png" alt="CaLabs" width="260">
+<img src="Logos/CaLabs_logo_completo_sin_fondo.png" alt="CaLabs" width="260">
 
 # 📺 CaLabs Playout
 

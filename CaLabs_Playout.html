@@ -474,8 +474,8 @@ const PLAYABLE=/\.(mp4|m4v|webm|mov|ogv|mkv)$/i, LEGACY=/\.(mpg|mpeg|avi|wmv|flv
 const esBasura=n=>/^\._|^\.DS_Store$|^Thumbs\.db$|^desktop\.ini$/i.test(n); // archivos ocultos que crea Mac/Windows
 const rel=p=>new URL(encodeURI(p),location.href).href;
 const LOGO_APP=rel('Logos/Logo de triángulo turquesa con llamas.png');
-const LOGOS={calabs:rel('Logos/CaLabs_simbolo_solo_transparente.png'),
-  completo:rel('Logos/CaLabs_logo_completo_transparente.png')};
+const LOGOS={calabs:rel('Logos/CaLabs_simbolo_solo_transparente_900px.png'),
+  completo:rel('Logos/CaLabs_logo_completo_sin_fondo.png')};
 const GRAF_POS={moscaX:87,moscaY:5,moscaW:9,horaX:4,horaY:6,horaS:2.4};
 const GRAF_DEF={logoSel:'calabs',fxInt:100,mosca:true,moscaTanda:false,moscaOp:90,fx:['giro'],fxCada:30,altTexto:'CALABS',hora:false,horaFondo:true,horaColorFondo:'#0a2870',horaOpFondo:75,horaColor:'#ffffff',zocalo:true,zocRep:15,
   etA:'AHORA',etB:'A CONTINUACIÓN',minDur:30,trans:'corte',fade:0.5,negro:false,...GRAF_POS};
