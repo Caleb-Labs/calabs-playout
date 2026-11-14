@@ -1,0 +1,7 @@
+Videos de prueba/
+*.mp4
+*.mpg
+*.mov
+*.mkv
+Thumbs.db
+.DS_Store
