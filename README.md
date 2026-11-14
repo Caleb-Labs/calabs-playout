@@ -58,6 +58,11 @@ CaLabs Playout is a **TV playout prototype built as a single HTML file**. A mode
 
 > 💡 Ideas or feedback? Open an issue. 🙌
 
+### 🤖 Built with AI
+This project was **designed and directed by Caleb (CaLabs)** and **built with the help of AI**: the code and documentation were written together with **Claude**, an AI assistant made by Anthropic. Every feature is tested and reviewed by a human.
+
+> ✍️ *Co-created with Claude (Anthropic)* 🧡
+
 ---
 
 ## 🇨🇱 Español
@@ -105,10 +110,15 @@ CaLabs Playout es un **prototipo de playout para televisión en un solo archivo 
 
 > 💡 ¿Ideas o comentarios? Abre un issue. 🙌
 
+### 🤖 Creado con IA
+Este proyecto fue **diseñado y dirigido por Caleb (CaLabs)** y **creado con ayuda de inteligencia artificial**: el código y la documentación se escribieron junto a **Claude**, un asistente de IA de Anthropic. Cada función es probada y revisada por una persona.
+
+> ✍️ *Co-creado con Claude (Anthropic)* 🧡
+
 ---
 
 <div align="center">
 
-Made with 💙 by **CaLabs** · All rights reserved © CaLabs · *Todos los derechos reservados*
+Made with 💙 and 🤖 AI by **CaLabs** · All rights reserved © CaLabs · *Todos los derechos reservados*
 
 </div>
