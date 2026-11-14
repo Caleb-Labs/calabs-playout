@@ -2,7 +2,7 @@
 
 > 🚧 **Prototipo en desarrollo (v3.4).** Esto es una demo en el navegador, no la versión final.
 
-Sistema de playout para televisión hecho en un solo archivo HTML. Reemplazo moderno para software de emisión antiguo que se congela con programas largos y no maneja bien las tandas.
+Sistema de playout para televisión hecho en un solo archivo HTML. Reemplazo moderno para software de emisión antiguo y caros y poco intuitivos ideal para personas que están entrando al mundo audiovisual en la parte de programación e ingesta de material audiovisual para tv.
 
 ![CaLabs Playout](docs/captura.png)
 
