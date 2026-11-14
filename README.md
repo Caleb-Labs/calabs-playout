@@ -38,13 +38,25 @@ CaLabs Playout is a **TV playout prototype built as a single HTML file**. A mode
 3. Load your own MP4 videos from the Library tab.
 4. Have MPG, AVI or WMV files? Use `Convertir MPG a MP4.bat` (needs FFmpeg).
 
-### 🗺️ Roadmap
-- [ ] 🎨 Color themes (Day / Night / Neutral / Custom) and languages
-- [ ] 📊 Green-yellow-red level meter with dB scale
+### 🗺️ Coming in future updates
+
+**🔜 Next update (v3.5)**
+- [ ] 🎨 Color themes: Day / Night / Neutral (always built from the CaLabs palette) plus a Custom theme with free colors
+- [ ] 🌍 Language switch (Spanish / English)
+- [ ] 📊 Classic green-yellow-red level meter with dB scale
+- [ ] 💾 Spot groups: see which videos each saved group contains and reload any of them
+- [ ] 🔀 Smoother crossfade between videos (fix in progress)
+- [ ] 🧱 Lower third: adjustable spacing between bars, independent or joint positioning, custom colors
+- [ ] 🖱️ Double-click on panel dividers to reset their size
 - [ ] 🎧 Audio output device selection
+
+**🛰️ Later**
 - [ ] 🔌 Final version on CasparCG with NDI output
 - [ ] 📹 Live inputs (HDMI capture, NDI, ATEM, OBS)
+- [ ] 🌐 External stream hook and a clean extra output
 - [ ] 💿 Windows installer
+
+> 💡 Ideas or feedback? Open an issue. 🙌
 
 ---
 
@@ -73,13 +85,25 @@ CaLabs Playout es un **prototipo de playout para televisión en un solo archivo 
 3. Carga tus propios videos MP4 desde la pestaña Biblioteca.
 4. ¿Tienes MPG, AVI o WMV? Usa `Convertir MPG a MP4.bat` (requiere FFmpeg).
 
-### 🗺️ Hoja de ruta
-- [ ] 🎨 Temas de color (Día / Noche / Neutro / Personalizado) e idiomas
-- [ ] 📊 Vúmetro verde-amarillo-rojo con escala en dB
-- [ ] 🎧 Selección de dispositivos de audio de salida
+### 🗺️ Próximas actualizaciones
+
+**🔜 Siguiente versión (v3.5)**
+- [ ] 🎨 Temas de color: Día / Noche / Neutro (siempre con la paleta CaLabs) y un tema Personalizado con colores libres
+- [ ] 🌍 Cambio de idioma (español / inglés)
+- [ ] 📊 Vúmetro clásico verde-amarillo-rojo con escala en dB
+- [ ] 💾 Grupos de spots: ver qué videos contiene cada grupo guardado y volver a cargarlos
+- [ ] 🔀 Fundido más suave entre videos (corrección en curso)
+- [ ] 🧱 Zócalo: separación ajustable entre barras, posición independiente o en conjunto y colores propios
+- [ ] 🖱️ Doble clic en los divisores de paneles para restablecer su tamaño
+- [ ] 🎧 Selección de dispositivos de salida de audio
+
+**🛰️ Más adelante**
 - [ ] 🔌 Versión final sobre CasparCG con salida NDI
 - [ ] 📹 Entradas en vivo (captura HDMI, NDI, ATEM, OBS)
+- [ ] 🌐 Conexión a transmisión externa y salida limpia adicional
 - [ ] 💿 Instalador para Windows
+
+> 💡 ¿Ideas o comentarios? Abre un issue. 🙌
 
 ---
 
