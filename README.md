@@ -53,33 +53,33 @@ A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparC
 - 💾 Everything you save is also written to a file with automatic backups, and restored if the program's memory is deleted.
 - 📦 Windows installer with terms & conditions, install-folder choice and start-with-Windows option (see [`v2/Instalador`](v2/Instalador)).
 
-**🔜 Still to come**
-- [ ] 🔄 "Check for updates" button and a "what's new" window
-- [ ] 🧰 One-click Windows settings script (no sleep, etc.)
-- [ ] 📲 Telegram alerts to a group, with a "I'll take it" button
-- [ ] 📹 Live inputs: capture cards, ATEM Mini, web streams and NDI input, with preview and a manual "Go live" (no automation during a live feed)
-- [ ] 🕵️ Optional black / silence watchdog
-- [ ] 📄 PDF export and longer soak tests
+**🔜 What is still missing** — see the roadmap below.
 
 **🛠️ Build it** — you need the [.NET 10 SDK](https://dotnet.microsoft.com/) and the CasparCG 2.5.1 release (download it from its official page; it is **not** included here). NDI output needs [NDI Tools](https://ndi.video/). To make the installer you also need [Inno Setup 6](https://jrsoftware.org/isinfo.php): run `v2/Instalador/construir.ps1 -Motor "<path to CasparCG>"`.
 
-### 🗺️ Coming in future updates
+### 🗺️ Roadmap
 
-**🔜 Next update (v3.5)**
-- [ ] 🎨 Color themes: Day / Night / Neutral (always built from the CaLabs palette) plus a Custom theme with free colors
-- [ ] 🌍 Language switch (Spanish / English)
-- [ ] 📊 Classic green-yellow-red level meter with dB scale
-- [ ] 💾 Spot groups: see which videos each saved group contains and reload any of them
-- [ ] 🔀 Smoother crossfade between videos (fix in progress)
-- [ ] 🧱 Lower third: adjustable spacing between bars, independent or joint positioning, custom colors
-- [ ] 🖱️ Double-click on panel dividers to reset their size
-- [ ] 🎧 Audio output device selection
+**✅ Done** *(in the browser prototype and in the native 2.0)*
+- [x] ~~🎨 Color themes: Day / Night / Neutral (always built from the CaLabs palette) plus a Custom theme with free colors~~
+- [x] ~~🌍 Language switch (Spanish / English)~~
+- [x] ~~📊 Classic green-yellow-red level meter with dB scale~~ — in 2.0 it reads the real engine level
+- [x] ~~💾 Spot groups: see which videos each saved group contains and reload any of them~~
+- [x] ~~🔀 Smoother crossfade between videos~~ — in 2.0 the engine does an optional fade
+- [x] ~~🧱 Lower third: adjustable spacing between bars, independent or joint positioning, custom colors~~
+- [x] ~~🖱️ Double-click on panel dividers to reset their size~~
+- [x] ~~🎧 Audio output device selection~~ — in 2.0 the air output device can be pinned
+- [x] ~~🔌 Final version on CasparCG with NDI output~~ — native 2.0, in development; NDI output tested over the network
+- [x] ~~💿 Windows installer~~ — first version with terms & conditions and install-folder choice; still being tested
 
-**🛰️ Later**
-- [ ] 🔌 Final version on CasparCG with NDI output
-- [ ] 📹 Live inputs (HDMI capture, NDI, ATEM, OBS)
+**🔜 Still to come**
+- [ ] 🔄 "Check for updates" button and a "what's new" window
+- [ ] 🧰 One-click Windows settings script (no sleep, etc.)
+- [ ] 📲 Telegram alerts to a group, with an "I'll take it" button
+- [ ] 📹 Live inputs (HDMI/USB capture cards, ATEM Mini, web streams, NDI input) with preview and a manual "Go live", no automation during a live feed *(NDI input already received in tests; capture cards and ATEM pending real-hardware tests)*
 - [ ] 🌐 External stream hook and a clean extra output
-- [ ] 💿 Windows installer
+- [ ] 🕵️ Optional black / silence watchdog
+- [ ] 📄 PDF export of the schedule
+- [ ] 🧪 24-hour soak and stress tests, bundled WebView2 runtime
 
 > 💡 Ideas or feedback? Open an issue. 🙌
 
@@ -130,33 +130,33 @@ Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el moto
 - 💾 Todo lo que guardas se copia también a un archivo con respaldos automáticos, y se recupera si se borra la memoria del programa.
 - 📦 Instalador de Windows con términos y condiciones, elección de carpeta y arranque con Windows (ver [`v2/Instalador`](v2/Instalador)).
 
-**🔜 Lo que falta**
-- [ ] 🔄 Botón "Buscar actualización" y ventana de "novedades"
-- [ ] 🧰 Script de ajustes de Windows de un clic (que no se duerma, etc.)
-- [ ] 📲 Avisos por Telegram a un grupo, con botón "Lo tomo yo"
-- [ ] 📹 Entradas en vivo: capturadoras, ATEM Mini, transmisiones web y entrada NDI, con vista previa y un "En directo" manual (sin automatización mientras hay señal en vivo)
-- [ ] 🕵️ Vigilante opcional de negro y silencio
-- [ ] 📄 Exportar a PDF y pruebas largas de estabilidad
+**🔜 Lo que falta** — mira la hoja de ruta más abajo.
 
 **🛠️ Cómo compilarla** — necesitas el [SDK de .NET 10](https://dotnet.microsoft.com/) y la versión 2.5.1 de CasparCG (se descarga de su página oficial; **no** se incluye aquí). La salida NDI necesita [NDI Tools](https://ndi.video/). Para armar el instalador además hace falta [Inno Setup 6](https://jrsoftware.org/isinfo.php): ejecuta `v2/Instalador/construir.ps1 -Motor "<ruta a CasparCG>"`.
 
 ### 🗺️ Próximas actualizaciones
 
-**🔜 Siguiente versión (v3.5)**
-- [ ] 🎨 Temas de color: Día / Noche / Neutro (siempre con la paleta CaLabs) y un tema Personalizado con colores libres
-- [ ] 🌍 Cambio de idioma (español / inglés)
-- [ ] 📊 Vúmetro clásico verde-amarillo-rojo con escala en dB
-- [ ] 💾 Grupos de spots: ver qué videos contiene cada grupo guardado y volver a cargarlos
-- [ ] 🔀 Fundido más suave entre videos (corrección en curso)
-- [ ] 🧱 Zócalo: separación ajustable entre barras, posición independiente o en conjunto y colores propios
-- [ ] 🖱️ Doble clic en los divisores de paneles para restablecer su tamaño
-- [ ] 🎧 Selección de dispositivos de salida de audio
+**✅ Ya hecho** *(en el prototipo de navegador y en la versión nativa 2.0)*
+- [x] ~~🎨 Temas de color: Día / Noche / Neutro (siempre con la paleta CaLabs) y un tema Personalizado con colores libres~~
+- [x] ~~🌍 Cambio de idioma (español / inglés)~~
+- [x] ~~📊 Vúmetro clásico verde-amarillo-rojo con escala en dB~~ — en la 2.0 lee el nivel real del motor
+- [x] ~~💾 Grupos de spots: ver qué videos contiene cada grupo guardado y volver a cargarlos~~
+- [x] ~~🔀 Fundido más suave entre videos~~ — en la 2.0 lo hace el motor, de forma opcional
+- [x] ~~🧱 Zócalo: separación ajustable entre barras, posición independiente o en conjunto y colores propios~~
+- [x] ~~🖱️ Doble clic en los divisores de paneles para restablecer su tamaño~~
+- [x] ~~🎧 Selección de dispositivos de salida de audio~~ — en la 2.0 se puede fijar el dispositivo del aire
+- [x] ~~🔌 Versión final sobre CasparCG con salida NDI~~ — versión nativa 2.0, en desarrollo; salida NDI probada por red
+- [x] ~~💿 Instalador para Windows~~ — primera versión con términos y condiciones y elección de carpeta; todavía en pruebas
 
-**🛰️ Más adelante**
-- [ ] 🔌 Versión final sobre CasparCG con salida NDI
-- [ ] 📹 Entradas en vivo (captura HDMI, NDI, ATEM, OBS)
+**🔜 Lo que falta**
+- [ ] 🔄 Botón "Buscar actualización" y ventana de "novedades"
+- [ ] 🧰 Script de ajustes de Windows de un clic (que no se duerma, etc.)
+- [ ] 📲 Avisos por Telegram a un grupo, con botón "Lo tomo yo"
+- [ ] 📹 Entradas en vivo (capturadoras HDMI/USB, ATEM Mini, transmisiones web, entrada NDI) con vista previa y un "En directo" manual, sin automatización mientras hay señal en vivo *(la entrada NDI ya se recibió en pruebas; capturadoras y ATEM esperan pruebas con equipos reales)*
 - [ ] 🌐 Conexión a transmisión externa y salida limpia adicional
-- [ ] 💿 Instalador para Windows
+- [ ] 🕵️ Vigilante opcional de negro y silencio
+- [ ] 📄 Exportar la parrilla a PDF
+- [ ] 🧪 Pruebas de 24 horas y de estrés, y WebView2 incluido en el instalador
 
 > 💡 ¿Ideas o comentarios? Abre un issue. 🙌
 
