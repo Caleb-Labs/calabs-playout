@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><title>CaLabs graficas</title>
+<!-- Capa de graficas que CasparCG dibuja encima del video (pantalla completa y NDI). Las ordenes llegan por CALL desde el Programador y la pantalla.
+     El CSS de los graficos es el mismo de ui/playout/index.html (Monitor): si se cambia alla, copiarlo aqui. -->
+<style>
+html,body{margin:0;background:transparent;overflow:hidden}
+/* el zocalo vacio no debe verse nunca: fuera de pantalla y oculto mientras no esta activo */
+.stage .zocalo{transform:translateX(-110cqw)}
+.stage .zocalo.visible{transform:none}
+.stage .zocalo:not(.visible){visibility:hidden;transition:transform .8s cubic-bezier(.2,.8,.2,1),visibility 0s .8s}
+.stage{position:fixed;inset:0;width:100vw;height:100vh;container-type:size;--fade:0s}
+.stage .mosca{position:absolute;z-index:3;left:87%;top:5%;width:9cqw;opacity:var(--op,.9);transition:opacity .8s;filter:drop-shadow(0 0 .4cqw rgba(0,0,0,.6));container-type:inline-size}
+.stage .mosca .cara{display:block;width:100%;height:auto;pointer-events:none}
+.stage .mosca .alt{position:absolute;inset:0;display:grid;place-items:center;text-align:center;opacity:0;pointer-events:none;font:800 20cqw/1.05 "Segoe UI",Arial,sans-serif;color:#fff;text-shadow:0 0 6cqw #000,0 2cqw 5cqw rgba(0,0,0,.9)}
+.stage .mosca.oculta,.stage .hora.oculta{opacity:0;visibility:hidden;transition:opacity .8s,visibility 0s .8s}
+.stage .mosca.fx-giro{animation:fxGiro 1.6s ease-in-out}
+.stage .mosca.fx-volteo{animation:fxVolteo 1.6s ease-in-out}
+.stage .mosca.fx-plano{animation:fxPlano 1.6s ease-in-out}
+.stage .mosca.fx-pulso{animation:fxPulso 2.2s ease-in-out}
+.stage .mosca.fx-latido{animation:fxLatido 2.6s ease-in-out}
+.stage .mosca.fx-rebote{animation:fxRebote 1.4s ease-out}
+.stage .mosca.fx-destello{animation:fxDestello 1.3s ease-in-out}
+.stage .mosca.fx-aparecer{animation:fxAparecer 3s ease-in-out}
+.stage .mosca.fx-texto .cara{animation:fxCaraOut 6s ease-in-out}
+.stage .mosca.fx-texto .alt{animation:fxAltIn 6s ease-in-out}
+@keyframes fxGiro{from{transform:perspective(60cqw) rotateY(0)}to{transform:perspective(60cqw) rotateY(360deg)}}
+@keyframes fxVolteo{from{transform:perspective(60cqw) rotateX(0)}to{transform:perspective(60cqw) rotateX(360deg)}}
+@keyframes fxPlano{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes fxPulso{0%,100%{transform:scale(1)}50%{transform:scale(calc(1 + .1*var(--fxi,1)));filter:drop-shadow(0 0 1.4cqw rgba(90,170,255,.95))}}
+@keyframes fxLatido{0%,100%{transform:scale(1)}22%{transform:scale(calc(1 + .08*var(--fxi,1)))}46%{transform:scale(calc(1 + .02*var(--fxi,1)))}70%{transform:scale(calc(1 + .08*var(--fxi,1)))}}
+@keyframes fxRebote{0%,100%{transform:translateY(0)}30%{transform:translateY(calc(-35%*var(--fxi,1)))}55%{transform:translateY(0)}75%{transform:translateY(calc(-14%*var(--fxi,1)))}}
+@keyframes fxDestello{0%,100%{filter:brightness(1) drop-shadow(0 0 .4cqw rgba(0,0,0,.6))}50%{filter:brightness(calc(1 + 1.3*var(--fxi,1))) drop-shadow(0 0 1.6cqw #fff)}}
+@keyframes fxAparecer{0%,100%{opacity:var(--op,.9)}25%,70%{opacity:0}}
+@keyframes fxCaraOut{0%,100%{opacity:1;transform:none}12%,88%{opacity:0;transform:scale(.6)}}
+@keyframes fxAltIn{0%,100%{opacity:0;transform:scale(.6)}12%,88%{opacity:1;transform:none}}
+.stage .hora{position:absolute;z-index:3;top:6%;left:4%;white-space:nowrap;transition:opacity .8s;font:700 2.4cqw/1 "Segoe UI",Arial,sans-serif;color:#fff;background:rgba(10,40,110,.75);padding:.5cqw 1cqw;border-radius:.4cqw;letter-spacing:.05em}
+.stage .zocalo{position:absolute;z-index:3;left:var(--zx,4%);bottom:var(--zy,8%);display:flex;flex-direction:column;align-items:flex-start;gap:var(--zgap,.1cqw);font-size:var(--zs,2.1cqw);transform:translateX(-130%);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.stage .zocalo.visible{transform:none}
+.stage .zocalo .fila{display:flex;font:600 1em/1.25 "Segoe UI",Arial,sans-serif}
+.stage .zocalo .fila.a{margin-left:var(--zax,0)}
+.stage .zocalo .fila.b{margin-left:var(--zbx,0)}
+.stage .zocalo .et{background:var(--zetbg,#fff);color:var(--zetfg,#0b3a8f);font-weight:800;padding:.26em .48em;letter-spacing:.06em;font-size:.72em;display:flex;align-items:center}
+.stage .zocalo .tx{background:var(--za,linear-gradient(90deg,#0a48c9,#2a7bff));color:var(--ztx,#fff);padding:.26em .76em}
+.stage .zocalo .fila.b .tx{background:var(--zb,linear-gradient(90deg,#082f80,#0a48c9))}
+.stage .ticker{position:absolute;z-index:3;left:0;width:100%;top:88%;overflow:hidden;white-space:nowrap;display:none;transition:opacity .8s;font-size:3cqw}
+.stage .ticker.on{display:block;opacity:0}
+.stage .ticker.on.vis{opacity:1}
+.stage .ticker.pausa{animation-play-state:paused}
+.stage .ticker span{display:inline-block;padding:.3em 0;line-height:1;will-change:transform;animation:tkMove 20s linear 1 both;animation-play-state:inherit}
+@keyframes tkMove{from{transform:translateX(100cqw)}to{transform:translateX(-100%)}}
+</style></head><body>
+<div class="stage" id="st">
+<div class="hora oculta" id="hora"></div>
+<div class="mosca oculta" id="mosca"><img class="cara" id="mImg" alt=""><video class="cara" id="mVid" muted loop playsinline autoplay style="display:none"></video><div class="alt" id="mAlt"></div></div>
+<div class="zocalo" id="zoc"><div class="fila a"><span class="et" id="ea"></span><span class="tx" id="za"></span></div><div class="fila b"><span class="et" id="eb"></span><span class="tx" id="zb"></span></div></div>
+<div class="ticker" id="tk"><span id="tkS"></span></div>
+</div>
+<script>
+var $=function(i){return document.getElementById(i);};
+var G={},V={logo:false,hora:false,zoc:false,tk:false},ultFx=Date.now(),fxI=0,zt=null,tkT=null,tkY=0;
+var FX={giro:1700,volteo:1700,plano:1700,pulso:2300,latido:2700,rebote:1500,destello:1400,aparecer:3100,texto:6100};
+function dec(b){return JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b),function(c){return c.charCodeAt(0);})));}
+function pad(n){return String(n).padStart(2,'0');}
+function rgba(hex,op){var n=parseInt((hex||'#000000').slice(1),16);return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+(op/100)+')';}
+// El Programador manda aqui la configuracion y que se puede ver (logo, reloj, zocalo, ticker) cada vez que cambia y cada 5 s.
+function estado(b){
+  var o=dec(b);G=o.g;V=o.vis;
+  var vid=/\.(webm|mp4)(\?|$)/i.test(o.logo||'');
+  if(vid){$('mImg').style.display='none';$('mVid').style.display='';if($('mVid').dataset.u!==o.logo){$('mVid').dataset.u=o.logo;$('mVid').src=o.logo;$('mVid').play().catch(function(){});}}
+  else{$('mVid').style.display='none';$('mImg').style.display='';if($('mImg').dataset.u!==o.logo){$('mImg').dataset.u=o.logo;$('mImg').src=o.logo;}}
+  var m=$('mosca').style;m.left=G.moscaX+'%';m.top=G.moscaY+'%';m.width=G.moscaW+'cqw';
+  m.setProperty('--op',G.moscaOp/100);m.setProperty('--fxi',Math.max(.2,Math.min(2,(+G.fxInt||100)/100)));
+  var h=$('hora').style;h.left=G.horaX+'%';h.top=G.horaY+'%';h.fontSize=G.horaS+'cqw';h.color=G.horaColor||'#fff';
+  h.background=G.horaFondo===false?'transparent':rgba(G.horaColorFondo||'#0a2870',G.horaOpFondo==null?75:G.horaOpFondo);
+  h.textShadow=G.horaFondo===false?'0 0 .4cqw #000,0 .15cqw .3cqw #000':'none';
+  $('mosca').classList.toggle('oculta',!V.logo);$('hora').classList.toggle('oculta',!V.hora);
+  var Z=$('zoc').style,gr=function(c){return 'linear-gradient(90deg,'+c+',color-mix(in srgb,'+c+' 72%,#fff))';};
+  Z.setProperty('--zx',G.zocX+'%');Z.setProperty('--zy',G.zocY+'%');Z.setProperty('--zgap',G.zocGap+'cqw');Z.setProperty('--zs',G.zocS+'cqw');
+  Z.setProperty('--zax',G.zocAX+'cqw');Z.setProperty('--zbx',G.zocBX+'cqw');Z.setProperty('--zetbg',G.zocEtBg);Z.setProperty('--zetfg',G.zocEtFg);
+  Z.setProperty('--za',gr(G.zocA));Z.setProperty('--zb',gr(G.zocB));Z.setProperty('--ztx',G.zocTx);
+  $('ea').textContent=G.etA;$('eb').textContent=G.etB;$('mAlt').textContent=G.altTexto;
+  if(!V.zoc)quitarZoc();
+  if(!V.tk)tkOff();
+  reloj();
+}
+function reloj(){var d=new Date(),t=pad(d.getHours())+':'+pad(d.getMinutes());if($('hora').textContent!==t)$('hora').textContent=t;}
+setInterval(reloj,1000);
+function lanzarFx(fx){var m=$('mosca');for(var k in FX)m.classList.remove('fx-'+k);void m.offsetWidth;m.classList.add('fx-'+fx);setTimeout(function(){m.classList.remove('fx-'+fx);},FX[fx]);}
+setInterval(function(){ // efecto del logo, rotando entre los elegidos
+  if(!V.logo||Date.now()-ultFx<Math.max(5,+G.fxCada||30)*1000)return;ultFx=Date.now();
+  var l=(G.fx||[]).filter(function(x){return FX[x];});if(!l.length)return;
+  lanzarFx(l[fxI++%l.length]);
+},1000);
+function fx(b){if(V.logo)lanzarFx(dec(b).n);} // "Probar" de la pantalla
+// El zocalo y el ticker no se pisan: el que llega segundo espera a que el primero termine (una orden en espera dura 30 s como maximo).
+var zocPend=null,tkPend=null,tkAire=false;
+function quitarZoc(){clearTimeout(zt);$('zoc').classList.remove('visible');zt=null;
+  if(tkPend){var p=tkPend;tkPend=null;if(Date.now()-p.t<30000)setTimeout(function(){tk(p.b);},900);}}
+function zoc(b){
+  if(!V.zoc)return;
+  if(tkAire){zocPend={b:b,t:Date.now()};return;}
+  var o=dec(b);
+  $('za').textContent=o.a;$('zb').textContent=o.b||'';$('zb').parentNode.style.display=o.b?'':'none';
+  $('zoc').classList.add('visible');clearTimeout(zt);zt=setTimeout(quitarZoc,9000);
+}
+function tk(b){ // empieza una pasada del texto, de derecha a izquierda; al terminar se quita sola
+  if(!V.tk)return;
+  if($('zoc').classList.contains('visible')){tkPend={b:b,t:Date.now()};return;}
+  var t=dec(b),k=$('tk'),s=$('tkS');clearTimeout(tkT);tkAire=true;
+  s.textContent=t.texto;
+  var e=k.style;e.top=t.y+'%';e.fontSize=t.tam+'cqw';e.fontFamily='"'+t.fuente+'","Segoe UI",Arial,sans-serif';e.fontWeight=t.negrita?'700':'400';e.color=t.color;
+  e.background=t.fondo?rgba(t.colorFondo,t.opFondo):'transparent';e.textShadow=t.fondo?'none':'0 0 .4cqw #000,0 .15cqw .3cqw #000';
+  k.classList.add('on');s.style.animation='none';void s.offsetWidth;
+  var ancho=s.offsetWidth/(innerWidth||1)*100,dur=Math.max(2,(100+ancho)/Math.max(1,t.vel));
+  s.style.animation='';s.style.animationDuration=dur.toFixed(2)+'s';
+  requestAnimationFrame(function(){k.classList.add('vis');});
+  $('zoc').style.bottom=t.y>50?(100-t.y+2)+'%':'';
+}
+$('tkS').addEventListener('animationend',function(){tkOff();});
+function tkOff(){var k=$('tk');k.classList.remove('vis');clearTimeout(tkT);tkT=setTimeout(function(){k.classList.remove('on');},900);$('zoc').style.bottom='';
+  tkAire=false;tkPend=null;
+  if(zocPend){var p=zocPend;zocPend=null;if(Date.now()-p.t<30000)setTimeout(function(){zoc(p.b);},900);}}
+</script></body></html>

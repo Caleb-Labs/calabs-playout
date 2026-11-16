@@ -5,3 +5,13 @@ Videos de prueba/
 *.mkv
 Thumbs.db
 .DS_Store
+
+# CaLabs Playout 2.0
+v2/**/bin/
+v2/**/obj/
+v2/datos/
+v2/config.json
+v2/lista.json
+v2/emergencia.json
+v2/Instalador/staging/
+v2/Instalador/salida/

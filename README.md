@@ -7,7 +7,7 @@
 **A modern TV playout system that runs in your browser.**
 *Un sistema de playout para televisión que funciona en el navegador.*
 
-🚧 `Prototype v3.4 · work in progress` 🚧
+🚧 `Browser prototype v3.4` · `Native version 2.0 (CasparCG + NDI) · in development` 🚧
 
 </div>
 
@@ -37,6 +37,31 @@ CaLabs Playout is a **TV playout prototype built as a single HTML file**. A mode
 2. Double-click `Abrir CaLabs Playout.bat` (Windows, uses Chrome or Edge), or open `CaLabs_Playout.html` in Chrome.
 3. Load your own MP4 videos from the Library tab.
 4. Have MPG, AVI or WMV files? Use `Convertir MPG a MP4.bat` (needs FFmpeg).
+
+### 🧱 Native version 2.0 — CasparCG + NDI (in development)
+
+A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparCG 2.5** engine, with **NDI output**. The browser prototype above stays as it is; the new source lives in [`v2/`](v2/).
+
+**✅ What's new in 2.0**
+- 🛡️ Built to stay on air: engine, scheduler and control window are **independent programs**. A supervisor restarts whatever freezes or dies (engine, scheduler, window), and the picture keeps playing if the window is closed.
+- 🚨 Emergency playlist that takes over by itself if the video stops advancing; going back to the schedule is manual (*now* or *when the emergency clip ends*).
+- ✂️ Ad breaks **inside** a program (the program resumes exactly where it left off), "Break now" (*now* / *when the program ends*) and fixed-time breaks, all run by the engine even with the window closed.
+- 🎨 Graphics on air (logo bug with effects, clock, lower third, ticker) drawn by the engine, so they go out on the **screen output and NDI**. Rules built in: no graphics on ads or very short clips, logo only on emergency, ticker and lower third take turns.
+- 🔀 Optional fade between videos and optional "skip black + silence at the end of a program".
+- 🖥️ Full-screen output on any connected monitor, an "emergency exit" hotkey (`Ctrl+Alt+V`) and a tray icon.
+- 🔊 Real level meter and volume from the engine, fixed audio output device (with a red warning if it is missing) and a private "listen" output.
+- 💾 Everything you save is also written to a file with automatic backups, and restored if the program's memory is deleted.
+- 📦 Windows installer with terms & conditions, install-folder choice and start-with-Windows option (see [`v2/Instalador`](v2/Instalador)).
+
+**🔜 Still to come**
+- [ ] 🔄 "Check for updates" button and a "what's new" window
+- [ ] 🧰 One-click Windows settings script (no sleep, etc.)
+- [ ] 📲 Telegram alerts to a group, with a "I'll take it" button
+- [ ] 📹 Live inputs: capture cards, ATEM Mini, web streams and NDI input, with preview and a manual "Go live" (no automation during a live feed)
+- [ ] 🕵️ Optional black / silence watchdog
+- [ ] 📄 PDF export and longer soak tests
+
+**🛠️ Build it** — you need the [.NET 10 SDK](https://dotnet.microsoft.com/) and the CasparCG 2.5.1 release (download it from its official page; it is **not** included here). NDI output needs [NDI Tools](https://ndi.video/). To make the installer you also need [Inno Setup 6](https://jrsoftware.org/isinfo.php): run `v2/Instalador/construir.ps1 -Motor "<path to CasparCG>"`.
 
 ### 🗺️ Coming in future updates
 
@@ -89,6 +114,31 @@ CaLabs Playout es un **prototipo de playout para televisión en un solo archivo 
 2. Haz doble clic en `Abrir CaLabs Playout.bat` (Windows, usa Chrome o Edge), o abre `CaLabs_Playout.html` en Chrome.
 3. Carga tus propios videos MP4 desde la pestaña Biblioteca.
 4. ¿Tienes MPG, AVI o WMV? Usa `Convertir MPG a MP4.bat` (requiere FFmpeg).
+
+### 🧱 Versión nativa 2.0 — CasparCG + NDI (en desarrollo)
+
+Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el motor **CasparCG 2.5**, con **salida NDI**. El prototipo de navegador de arriba se queda como está; el código nuevo está en [`v2/`](v2/).
+
+**✅ Novedades de la 2.0**
+- 🛡️ Hecha para no caerse del aire: motor, programador y ventana de control son **programas independientes**. Un supervisor reinicia lo que se congele o muera (motor, programador, ventana), y la imagen sigue saliendo aunque se cierre la ventana.
+- 🚨 Playlist de emergencia que entra sola si el video deja de avanzar; la vuelta a la parrilla es manual (*ahora* o *cuando termine el video de emergencia*).
+- ✂️ Cortes **dentro** de un programa (el programa sigue exactamente donde quedó), "Tanda ahora" (*ahora* / *al terminar el programa*) y tandas a hora fija, todo lo lleva el motor aunque la ventana esté cerrada.
+- 🎨 Gráficas al aire (mosca con efectos, hora, zócalo y ticker) dibujadas por el motor, así salen por la **pantalla y por NDI**. Reglas incluidas: sin gráficas en spots ni videos muy cortos, solo el logo en la emergencia, el ticker y el zócalo se turnan.
+- 🔀 Fundido opcional entre videos y opción de "saltar el negro y el silencio al final del programa".
+- 🖥️ Salida a pantalla completa en cualquier monitor, atajo de salida de emergencia (`Ctrl+Alt+V`) e icono en la bandeja.
+- 🔊 Vúmetro y volumen reales del motor, dispositivo de audio del aire fijo (con aviso en rojo si falta) y salida privada de "escucha".
+- 💾 Todo lo que guardas se copia también a un archivo con respaldos automáticos, y se recupera si se borra la memoria del programa.
+- 📦 Instalador de Windows con términos y condiciones, elección de carpeta y arranque con Windows (ver [`v2/Instalador`](v2/Instalador)).
+
+**🔜 Lo que falta**
+- [ ] 🔄 Botón "Buscar actualización" y ventana de "novedades"
+- [ ] 🧰 Script de ajustes de Windows de un clic (que no se duerma, etc.)
+- [ ] 📲 Avisos por Telegram a un grupo, con botón "Lo tomo yo"
+- [ ] 📹 Entradas en vivo: capturadoras, ATEM Mini, transmisiones web y entrada NDI, con vista previa y un "En directo" manual (sin automatización mientras hay señal en vivo)
+- [ ] 🕵️ Vigilante opcional de negro y silencio
+- [ ] 📄 Exportar a PDF y pruebas largas de estabilidad
+
+**🛠️ Cómo compilarla** — necesitas el [SDK de .NET 10](https://dotnet.microsoft.com/) y la versión 2.5.1 de CasparCG (se descarga de su página oficial; **no** se incluye aquí). La salida NDI necesita [NDI Tools](https://ndi.video/). Para armar el instalador además hace falta [Inno Setup 6](https://jrsoftware.org/isinfo.php): ejecuta `v2/Instalador/construir.ps1 -Motor "<ruta a CasparCG>"`.
 
 ### 🗺️ Próximas actualizaciones
 

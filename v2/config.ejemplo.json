@@ -1,0 +1,7 @@
+{
+  "amcpHost": "127.0.0.1",
+  "amcpPort": 5250,
+  "canal": 1,
+  "capa": 10,
+  "lista": "lista.json"
+}
