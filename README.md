@@ -7,7 +7,7 @@
 **A modern TV playout system that runs in your browser.**
 *Un sistema de playout para televisión que funciona en el navegador.*
 
-🚧 `Browser prototype v3.4` · `Native version 2.0 (CasparCG + NDI) · in development` 🚧
+🚧 `Browser prototype v3.4` · `Native version 2.3 (CasparCG + NDI) · in development` 🚧
 
 </div>
 
@@ -17,7 +17,7 @@
 
 CaLabs Playout is a **TV playout prototype built as a single HTML file**. A modern alternative to old, expensive and unintuitive broadcast software, ideal for people getting started in TV scheduling and media ingest.
 
-> ⚠️ **Language note:** for now the interface is **in Spanish only**. Multi-language support (English included) is **planned and being worked on**. 🌍
+> ⚠️ **Language note:** the interface is available in **Spanish and English**. The newer **Inputs** and **Updates** tabs are still Spanish only; their translation is in progress. 🌍
 
 ![On air](docs/01_on-air.png)
 
@@ -38,7 +38,7 @@ CaLabs Playout is a **TV playout prototype built as a single HTML file**. A mode
 3. Load your own MP4 videos from the Library tab.
 4. Have MPG, AVI or WMV files? Use `Convertir MPG a MP4.bat` (needs FFmpeg).
 
-### 🧱 Native version 2.0 — CasparCG + NDI (in development)
+### 🧱 Native version 2.3 — CasparCG + NDI (in development)
 
 A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparCG 2.5** engine, with **NDI output**. The browser prototype above stays as it is; the new source lives in [`v2/`](v2/).
 
@@ -52,6 +52,12 @@ A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparC
 - 🔊 Real level meter and volume from the engine, fixed audio output device (with a red warning if it is missing) and a private "listen" output.
 - 💾 Everything you save is also written to a file with automatic backups, and restored if the program's memory is deleted.
 - 📦 Windows installer with terms & conditions, install-folder choice and start-with-Windows option (see [`v2/Instalador`](v2/Instalador)).
+
+**🆕 What's new in 2.1 – 2.3**
+- 🖼️ **2.1:** program icon on the desktop shortcut and the taskbar.
+- 📥 **2.2 · Inputs:** a new **Inputs** tab. Pick an **NDI** source or a **YouTube / Facebook** link, prepare it on a separate preview channel and put it **LIVE** with a two-step confirmation. While live there is no automation (no breaks, ads or fixed-time events): if the signal drops, the operator decides. Includes a "Leave live" button and an in-app yt-dlp updater.
+- 🔄 **2.3 · Updates:** visible version number, **Check for updates** and **What's new** buttons, an amber notice when a new version exists (asks for confirmation, warns that the air is interrupted), verified download, backup and **automatic rollback** if the new version does not start. Every update is **signed** (ECDSA P-256) and the program rejects anything that fails verification.
+- 🧰 Installer with optional Windows tweaks (no sleep, no system sounds, no forced Windows Update restarts, no notifications; all reverted on uninstall) and bundled VC++ and WebView2.
 
 **🔜 What is still missing** — see the roadmap below.
 
@@ -72,14 +78,17 @@ A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparC
 - [x] ~~💿 Windows installer~~ — first version with terms & conditions and install-folder choice; still being tested
 
 **🔜 Still to come**
-- [ ] 🔄 "Check for updates" button and a "what's new" window
-- [ ] 🧰 One-click Windows settings script (no sleep, etc.)
+- [x] ~~🔄 "Check for updates" button and a "what's new" window~~ — in 2.3, with signed updates and rollback; the real download test is still pending
+- [x] ~~🧰 One-click Windows settings script (no sleep, etc.)~~ — built into the installer as checkboxes
 - [ ] 📲 Telegram alerts to a group, with an "I'll take it" button
 - [ ] 📹 Live inputs (HDMI/USB capture cards, ATEM Mini, web streams, NDI input) with preview and a manual "Go live", no automation during a live feed *(NDI input already received in tests; capture cards and ATEM pending real-hardware tests)*
 - [ ] 🌐 External stream hook and a clean extra output
 - [ ] 🕵️ Optional black / silence watchdog
+- [ ] 🌍 English translation of the Inputs and Updates tabs
+- [ ] 🛟 Warn and flag the failed source if the engine restarts during a live input; keep an interleaved ad break if the scheduler restarts
+- [ ] 🧪 Real-world tests: 2.2 → 2.3 update flow, recovery after a power cut, leaving live mode
 - [ ] 📄 PDF export of the schedule
-- [ ] 🧪 24-hour soak and stress tests, bundled WebView2 runtime
+- [ ] 🧪 24-hour soak and stress tests *(WebView2 is already installed by the installer)*
 
 > 💡 Ideas or feedback? Open an issue. 🙌
 
@@ -94,7 +103,7 @@ This project was **designed and directed by Caleb (CaLabs)** and **built with th
 
 CaLabs Playout es un **prototipo de playout para televisión en un solo archivo HTML**. Una alternativa moderna a software de emisión antiguo, caro y poco intuitivo, ideal para personas que están entrando al mundo audiovisual en la programación e ingesta de material para TV.
 
-> ⚠️ **Nota de idioma:** por ahora la interfaz está **solo en español**. El soporte de varios idiomas (incluido inglés) **está planificado y en desarrollo**. 🌍
+> ⚠️ **Nota de idioma:** la interfaz está en **español e inglés**. Las pestañas nuevas **Entradas** y **Actualizaciones** todavía están solo en español; su traducción está en curso. 🌍
 
 ### ✨ Qué hace hoy
 - 🗓️ Parrilla con contador de horas cargadas y duración meta libre
@@ -115,7 +124,7 @@ CaLabs Playout es un **prototipo de playout para televisión en un solo archivo 
 3. Carga tus propios videos MP4 desde la pestaña Biblioteca.
 4. ¿Tienes MPG, AVI o WMV? Usa `Convertir MPG a MP4.bat` (requiere FFmpeg).
 
-### 🧱 Versión nativa 2.0 — CasparCG + NDI (en desarrollo)
+### 🧱 Versión nativa 2.3 — CasparCG + NDI (en desarrollo)
 
 Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el motor **CasparCG 2.5**, con **salida NDI**. El prototipo de navegador de arriba se queda como está; el código nuevo está en [`v2/`](v2/).
 
@@ -129,6 +138,12 @@ Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el moto
 - 🔊 Vúmetro y volumen reales del motor, dispositivo de audio del aire fijo (con aviso en rojo si falta) y salida privada de "escucha".
 - 💾 Todo lo que guardas se copia también a un archivo con respaldos automáticos, y se recupera si se borra la memoria del programa.
 - 📦 Instalador de Windows con términos y condiciones, elección de carpeta y arranque con Windows (ver [`v2/Instalador`](v2/Instalador)).
+
+**🆕 Novedades de la 2.1 a la 2.3**
+- 🖼️ **2.1:** icono del programa en el acceso directo del escritorio y en la barra de tareas.
+- 📥 **2.2 · Entradas:** pestaña nueva **Entradas**. Elige una fuente **NDI** o un link de **YouTube / Facebook**, prepárala en un canal de vista previa aparte y ponla **EN DIRECTO** con confirmación en dos pasos. En directo no hay automatización (ni cortes, ni tandas, ni hora fija): si la señal se cae, decide el operador. Incluye botón "Salir del directo" y actualizador de yt-dlp dentro del programa.
+- 🔄 **2.3 · Actualizaciones:** versión visible, botones **Buscar actualización** y **Novedades**, aviso ámbar cuando hay versión nueva (pide confirmación y avisa del corte del aire), descarga verificada, respaldo y **vuelta atrás automática** si la versión nueva no arranca. Cada actualización va **firmada** (ECDSA P-256) y el programa rechaza lo que no verifique.
+- 🧰 Instalador con ajustes de Windows opcionales (sin suspensión, sin sonidos, sin reinicios forzados de Windows Update, sin notificaciones; se revierten al desinstalar) y con VC++ y WebView2 incluidos.
 
 **🔜 Lo que falta** — mira la hoja de ruta más abajo.
 
@@ -149,14 +164,17 @@ Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el moto
 - [x] ~~💿 Instalador para Windows~~ — primera versión con términos y condiciones y elección de carpeta; todavía en pruebas
 
 **🔜 Lo que falta**
-- [ ] 🔄 Botón "Buscar actualización" y ventana de "novedades"
-- [ ] 🧰 Script de ajustes de Windows de un clic (que no se duerma, etc.)
+- [x] ~~🔄 Botón "Buscar actualización" y ventana de "novedades"~~ — en la 2.3, con actualizaciones firmadas y vuelta atrás; falta probar la descarga real
+- [x] ~~🧰 Script de ajustes de Windows de un clic (que no se duerma, etc.)~~ — incluido en el instalador como casillas
 - [ ] 📲 Avisos por Telegram a un grupo, con botón "Lo tomo yo"
 - [ ] 📹 Entradas en vivo (capturadoras HDMI/USB, ATEM Mini, transmisiones web, entrada NDI) con vista previa y un "En directo" manual, sin automatización mientras hay señal en vivo *(la entrada NDI ya se recibió en pruebas; capturadoras y ATEM esperan pruebas con equipos reales)*
 - [ ] 🌐 Conexión a transmisión externa y salida limpia adicional
 - [ ] 🕵️ Vigilante opcional de negro y silencio
+- [ ] 🌍 Traducción al inglés de las pestañas Entradas y Actualizaciones
+- [ ] 🛟 Avisar y marcar la fuente caída si el motor se reinicia con un directo al aire; no perder la tanda intercalada si el programador se reinicia
+- [ ] 🧪 Pruebas reales: flujo de actualización 2.2 → 2.3, recuperación tras un corte de luz y salida del directo
 - [ ] 📄 Exportar la parrilla a PDF
-- [ ] 🧪 Pruebas de 24 horas y de estrés, y WebView2 incluido en el instalador
+- [ ] 🧪 Pruebas de 24 horas y de estrés *(WebView2 ya lo instala el instalador)*
 
 > 💡 ¿Ideas o comentarios? Abre un issue. 🙌
 
