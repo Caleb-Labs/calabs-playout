@@ -32,12 +32,10 @@ CaLabs Playout is a **TV playout prototype built as a single HTML file**. A mode
 
 ![Output window](docs/02_output-window.png)
 
-### 🚀 Try it
-1. Download or clone this repository.
-2. Double-click `Abrir CaLabs Playout.bat` (Windows, uses Chrome or Edge), or open `CaLabs_Playout.html` in Chrome.
-3. Load your own MP4 videos from the Library tab.
-4. Have MPG, AVI or WMV files? Use `Convertir MPG a MP4.bat` (needs FFmpeg).
+### 💿 Install
+Download the Windows installer (`CaLabs-Playout-X.Y-Setup.exe`) from [Releases](../../releases) and run it. It includes the requirements (VC++ and WebView2), asks for the install folder and offers optional Windows tweaks. Requires Windows 11 and a GPU with OpenGL 4.5; NDI output needs [NDI Tools](https://ndi.video/). Later versions update from inside the program.
 
+> The browser prototype (`CaLabs_Playout.html`) is kept in this repository only as a reference and is no longer maintained.
 ### 🧱 Native version 2.3 — CasparCG + NDI (in development)
 
 A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparCG 2.5** engine, with **NDI output**. The browser prototype above stays as it is; the new source lives in [`v2/`](v2/).
@@ -65,31 +63,31 @@ A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparC
 
 ### 🗺️ Roadmap
 
-**✅ Done** *(in the browser prototype and in the native 2.0)*
+**✅ Done** *(in the browser prototype and in the native versions up to 2.3)*
 - [x] ~~🎨 Color themes: Day / Night / Neutral (always built from the CaLabs palette) plus a Custom theme with free colors~~
-- [x] ~~🌍 Language switch (Spanish / English)~~
+- [x] ~~🌍 Language switch (Spanish / English)~~ — the Inputs and Updates tabs are still Spanish only
 - [x] ~~📊 Classic green-yellow-red level meter with dB scale~~ — in 2.0 it reads the real engine level
 - [x] ~~💾 Spot groups: see which videos each saved group contains and reload any of them~~
 - [x] ~~🔀 Smoother crossfade between videos~~ — in 2.0 the engine does an optional fade
 - [x] ~~🧱 Lower third: adjustable spacing between bars, independent or joint positioning, custom colors~~
 - [x] ~~🖱️ Double-click on panel dividers to reset their size~~
-- [x] ~~🎧 Audio output device selection~~ — in 2.0 the air output device can be pinned
-- [x] ~~🔌 Final version on CasparCG with NDI output~~ — native 2.0, in development; NDI output tested over the network
-- [x] ~~💿 Windows installer~~ — first version with terms & conditions and install-folder choice; still being tested
+- [x] ~~🎧 Audio output device selection~~ — the air output device can be pinned
+- [x] ~~🔌 Final version on CasparCG with NDI output~~ — native version, NDI output tested over the network
+- [x] ~~💿 Windows installer~~ — terms & conditions, install-folder choice, bundled VC++ and WebView2; tested on a freshly formatted PC
+- [x] ~~🧰 Windows settings (no sleep, etc.)~~ — built into the installer as checkboxes, reverted on uninstall
+- [x] ~~🔄 "Check for updates" button and a "what's new" window~~ — 2.3, signed updates with rollback
+- [x] ~~📹 NDI input and web streams (YouTube / Facebook) with preview and a manual "Go live"~~ — 2.2, no automation during a live feed
+- [x] ~~📄 Schedule export to Excel and PDF~~ — PDF through the print view ("Save as PDF")
 
 **🔜 Still to come**
-- [x] ~~🔄 "Check for updates" button and a "what's new" window~~ — in 2.3, with signed updates and rollback; the real download test is still pending
-- [x] ~~🧰 One-click Windows settings script (no sleep, etc.)~~ — built into the installer as checkboxes
-- [ ] 📲 Telegram alerts to a group, with an "I'll take it" button
-- [ ] 📹 Live inputs (HDMI/USB capture cards, ATEM Mini, web streams, NDI input) with preview and a manual "Go live", no automation during a live feed *(NDI input already received in tests; capture cards and ATEM pending real-hardware tests)*
-- [ ] 🌐 External stream hook and a clean extra output
-- [ ] 🕵️ Optional black / silence watchdog
 - [ ] 🌍 English translation of the Inputs and Updates tabs
+- [ ] 🧪 Real-world tests: the 2.2 → 2.3 update flow with a real download, recovery after a power cut, leaving live mode
 - [ ] 🛟 Warn and flag the failed source if the engine restarts during a live input; keep an interleaved ad break if the scheduler restarts
-- [ ] 🧪 Real-world tests: 2.2 → 2.3 update flow, recovery after a power cut, leaving live mode
-- [ ] 📄 PDF export of the schedule
-- [ ] 🧪 24-hour soak and stress tests *(WebView2 is already installed by the installer)*
-
+- [ ] 📲 Telegram alerts to a group, with an "I'll take it" button
+- [ ] 🕵️ Optional black / silence watchdog
+- [ ] 📹 HDMI/USB capture cards and ATEM Mini *(waiting for real hardware)*
+- [ ] 🌐 Output to an external server (RTMP / SRT) and a clean extra output
+- [ ] 🧪 24-hour soak and stress tests
 > 💡 Ideas or feedback? Open an issue. 🙌
 
 ### 🤖 Built with AI
@@ -118,12 +116,10 @@ CaLabs Playout es un **prototipo de playout para televisión en un solo archivo 
 |:--:|:--:|:--:|
 | ![Tandas](docs/03_breaks.png) | ![Gráficas](docs/04_graphics.png) | ![Ticker](docs/05_ticker.png) |
 
-### 🚀 Cómo probarlo
-1. Descarga o clona este repositorio.
-2. Haz doble clic en `Abrir CaLabs Playout.bat` (Windows, usa Chrome o Edge), o abre `CaLabs_Playout.html` en Chrome.
-3. Carga tus propios videos MP4 desde la pestaña Biblioteca.
-4. ¿Tienes MPG, AVI o WMV? Usa `Convertir MPG a MP4.bat` (requiere FFmpeg).
+### 💿 Instalación
+Descarga el instalador de Windows (`CaLabs-Playout-X.Y-Setup.exe`) desde [Releases](../../releases) y ejecútalo. Incluye los requisitos (VC++ y WebView2), te deja elegir la carpeta y ofrece ajustes de Windows opcionales. Requiere Windows 11 y una GPU con OpenGL 4.5; la salida NDI necesita [NDI Tools](https://ndi.video/). Las versiones siguientes se actualizan desde dentro del programa.
 
+> El prototipo de navegador (`CaLabs_Playout.html`) se deja en este repositorio solo como referencia y ya no se mantiene.
 ### 🧱 Versión nativa 2.3 — CasparCG + NDI (en desarrollo)
 
 Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el motor **CasparCG 2.5**, con **salida NDI**. El prototipo de navegador de arriba se queda como está; el código nuevo está en [`v2/`](v2/).
@@ -151,31 +147,31 @@ Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el moto
 
 ### 🗺️ Próximas actualizaciones
 
-**✅ Ya hecho** *(en el prototipo de navegador y en la versión nativa 2.0)*
+**✅ Ya hecho** *(en el prototipo de navegador y en las versiones nativas hasta la 2.3)*
 - [x] ~~🎨 Temas de color: Día / Noche / Neutro (siempre con la paleta CaLabs) y un tema Personalizado con colores libres~~
-- [x] ~~🌍 Cambio de idioma (español / inglés)~~
+- [x] ~~🌍 Cambio de idioma (español / inglés)~~ — las pestañas Entradas y Actualizaciones siguen solo en español
 - [x] ~~📊 Vúmetro clásico verde-amarillo-rojo con escala en dB~~ — en la 2.0 lee el nivel real del motor
 - [x] ~~💾 Grupos de spots: ver qué videos contiene cada grupo guardado y volver a cargarlos~~
 - [x] ~~🔀 Fundido más suave entre videos~~ — en la 2.0 lo hace el motor, de forma opcional
 - [x] ~~🧱 Zócalo: separación ajustable entre barras, posición independiente o en conjunto y colores propios~~
 - [x] ~~🖱️ Doble clic en los divisores de paneles para restablecer su tamaño~~
-- [x] ~~🎧 Selección de dispositivos de salida de audio~~ — en la 2.0 se puede fijar el dispositivo del aire
-- [x] ~~🔌 Versión final sobre CasparCG con salida NDI~~ — versión nativa 2.0, en desarrollo; salida NDI probada por red
-- [x] ~~💿 Instalador para Windows~~ — primera versión con términos y condiciones y elección de carpeta; todavía en pruebas
+- [x] ~~🎧 Selección de dispositivos de salida de audio~~ — se puede fijar el dispositivo del aire
+- [x] ~~🔌 Versión final sobre CasparCG con salida NDI~~ — versión nativa, salida NDI probada por red
+- [x] ~~💿 Instalador para Windows~~ — términos y condiciones, elección de carpeta, VC++ y WebView2 incluidos; probado en un PC recién formateado
+- [x] ~~🧰 Ajustes de Windows (que no se duerma, etc.)~~ — incluidos en el instalador como casillas, se revierten al desinstalar
+- [x] ~~🔄 Botón "Buscar actualización" y ventana de "novedades"~~ — 2.3, actualizaciones firmadas con vuelta atrás
+- [x] ~~📹 Entrada NDI y transmisiones web (YouTube / Facebook) con vista previa y un "En directo" manual~~ — 2.2, sin automatización mientras hay señal en vivo
+- [x] ~~📄 Exportar la parrilla a Excel y PDF~~ — el PDF sale por la vista de impresión ("Guardar como PDF")
 
 **🔜 Lo que falta**
-- [x] ~~🔄 Botón "Buscar actualización" y ventana de "novedades"~~ — en la 2.3, con actualizaciones firmadas y vuelta atrás; falta probar la descarga real
-- [x] ~~🧰 Script de ajustes de Windows de un clic (que no se duerma, etc.)~~ — incluido en el instalador como casillas
-- [ ] 📲 Avisos por Telegram a un grupo, con botón "Lo tomo yo"
-- [ ] 📹 Entradas en vivo (capturadoras HDMI/USB, ATEM Mini, transmisiones web, entrada NDI) con vista previa y un "En directo" manual, sin automatización mientras hay señal en vivo *(la entrada NDI ya se recibió en pruebas; capturadoras y ATEM esperan pruebas con equipos reales)*
-- [ ] 🌐 Conexión a transmisión externa y salida limpia adicional
-- [ ] 🕵️ Vigilante opcional de negro y silencio
 - [ ] 🌍 Traducción al inglés de las pestañas Entradas y Actualizaciones
+- [ ] 🧪 Pruebas reales: flujo de actualización 2.2 → 2.3 con descarga real, recuperación tras un corte de luz y salida del directo
 - [ ] 🛟 Avisar y marcar la fuente caída si el motor se reinicia con un directo al aire; no perder la tanda intercalada si el programador se reinicia
-- [ ] 🧪 Pruebas reales: flujo de actualización 2.2 → 2.3, recuperación tras un corte de luz y salida del directo
-- [ ] 📄 Exportar la parrilla a PDF
-- [ ] 🧪 Pruebas de 24 horas y de estrés *(WebView2 ya lo instala el instalador)*
-
+- [ ] 📲 Avisos por Telegram a un grupo, con botón "Lo tomo yo"
+- [ ] 🕵️ Vigilante opcional de negro y silencio
+- [ ] 📹 Capturadoras HDMI/USB y ATEM Mini *(esperan equipos reales)*
+- [ ] 🌐 Salida a un servidor externo (RTMP / SRT) y salida limpia adicional
+- [ ] 🧪 Pruebas de 24 horas y de estrés
 > 💡 ¿Ideas o comentarios? Abre un issue. 🙌
 
 ### 🤖 Creado con IA
