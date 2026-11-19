@@ -7,7 +7,7 @@
 **A modern TV playout system that runs in your browser.**
 *Un sistema de playout para televisión que funciona en el navegador.*
 
-🚧 `Browser prototype v3.4` · `Native version 2.3 (CasparCG + NDI) · in development` 🚧
+🚧 `Native version 2.3 (CasparCG + NDI) · in development` 🚧
 
 </div>
 
@@ -15,7 +15,7 @@
 
 ## 🇬🇧 English
 
-CaLabs Playout is a **TV playout prototype built as a single HTML file**. A modern alternative to old, expensive and unintuitive broadcast software, ideal for people getting started in TV scheduling and media ingest.
+CaLabs Playout is a **native Windows TV playout program**. A modern alternative to old, expensive and unintuitive broadcast software, ideal for people getting started in TV scheduling and media ingest.
 
 > ⚠️ **Language note:** the interface is available in **Spanish and English**. The newer **Inputs** and **Updates** tabs are still Spanish only; their translation is in progress. 🌍
 
@@ -34,11 +34,9 @@ CaLabs Playout is a **TV playout prototype built as a single HTML file**. A mode
 
 ### 💿 Install
 Download the Windows installer (`CaLabs-Playout-X.Y-Setup.exe`) from [Releases](../../releases) and run it. It includes the requirements (VC++ and WebView2), asks for the install folder and offers optional Windows tweaks. Requires Windows 11 and a GPU with OpenGL 4.5; NDI output needs [NDI Tools](https://ndi.video/). Later versions update from inside the program.
-
-> The browser prototype (`CaLabs_Playout.html`) is kept in this repository only as a reference and is no longer maintained.
 ### 🧱 Native version 2.3 — CasparCG + NDI (in development)
 
-A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparCG 2.5** engine, with **NDI output**. The browser prototype above stays as it is; the new source lives in [`v2/`](v2/).
+A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparCG 2.5** engine, with **NDI output**. This repository only publishes the installers, the update patches and the documentation.
 
 **✅ What's new in 2.0**
 - 🛡️ Built to stay on air: engine, scheduler and control window are **independent programs**. A supervisor restarts whatever freezes or dies (engine, scheduler, window), and the picture keeps playing if the window is closed.
@@ -49,7 +47,7 @@ A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparC
 - 🖥️ Full-screen output on any connected monitor, an "emergency exit" hotkey (`Ctrl+Alt+V`) and a tray icon.
 - 🔊 Real level meter and volume from the engine, fixed audio output device (with a red warning if it is missing) and a private "listen" output.
 - 💾 Everything you save is also written to a file with automatic backups, and restored if the program's memory is deleted.
-- 📦 Windows installer with terms & conditions, install-folder choice and start-with-Windows option (see [`v2/Instalador`](v2/Instalador)).
+- 📦 Windows installer with terms & conditions, install-folder choice and start-with-Windows option.
 
 **🆕 What's new in 2.1 – 2.3**
 - 🖼️ **2.1:** program icon on the desktop shortcut and the taskbar.
@@ -59,11 +57,9 @@ A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparC
 
 **🔜 What is still missing** — see the roadmap below.
 
-**🛠️ Build it** — you need the [.NET 10 SDK](https://dotnet.microsoft.com/) and the CasparCG 2.5.1 release (download it from its official page; it is **not** included here). NDI output needs [NDI Tools](https://ndi.video/). To make the installer you also need [Inno Setup 6](https://jrsoftware.org/isinfo.php): run `v2/Instalador/construir.ps1 -Motor "<path to CasparCG>"`.
-
 ### 🗺️ Roadmap
 
-**✅ Done** *(in the browser prototype and in the native versions up to 2.3)*
+**✅ Done** *(up to version 2.3)*
 - [x] ~~🎨 Color themes: Day / Night / Neutral (always built from the CaLabs palette) plus a Custom theme with free colors~~
 - [x] ~~🌍 Language switch (Spanish / English)~~ — the Inputs and Updates tabs are still Spanish only
 - [x] ~~📊 Classic green-yellow-red level meter with dB scale~~ — in 2.0 it reads the real engine level
@@ -99,7 +95,7 @@ This project was **designed and directed by Caleb (CaLabs)** and **built with th
 
 ## 🇨🇱 Español
 
-CaLabs Playout es un **prototipo de playout para televisión en un solo archivo HTML**. Una alternativa moderna a software de emisión antiguo, caro y poco intuitivo, ideal para personas que están entrando al mundo audiovisual en la programación e ingesta de material para TV.
+CaLabs Playout es un **programa nativo de Windows para playout de televisión**. Una alternativa moderna a software de emisión antiguo, caro y poco intuitivo, ideal para personas que están entrando al mundo audiovisual en la programación e ingesta de material para TV.
 
 > ⚠️ **Nota de idioma:** la interfaz está en **español e inglés**. Las pestañas nuevas **Entradas** y **Actualizaciones** todavía están solo en español; su traducción está en curso. 🌍
 
@@ -118,11 +114,9 @@ CaLabs Playout es un **prototipo de playout para televisión en un solo archivo 
 
 ### 💿 Instalación
 Descarga el instalador de Windows (`CaLabs-Playout-X.Y-Setup.exe`) desde [Releases](../../releases) y ejecútalo. Incluye los requisitos (VC++ y WebView2), te deja elegir la carpeta y ofrece ajustes de Windows opcionales. Requiere Windows 11 y una GPU con OpenGL 4.5; la salida NDI necesita [NDI Tools](https://ndi.video/). Las versiones siguientes se actualizan desde dentro del programa.
-
-> El prototipo de navegador (`CaLabs_Playout.html`) se deja en este repositorio solo como referencia y ya no se mantiene.
 ### 🧱 Versión nativa 2.3 — CasparCG + NDI (en desarrollo)
 
-Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el motor **CasparCG 2.5**, con **salida NDI**. El prototipo de navegador de arriba se queda como está; el código nuevo está en [`v2/`](v2/).
+Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el motor **CasparCG 2.5**, con **salida NDI**. Este repositorio publica solo los instaladores, los parches de actualización y la documentación.
 
 **✅ Novedades de la 2.0**
 - 🛡️ Hecha para no caerse del aire: motor, programador y ventana de control son **programas independientes**. Un supervisor reinicia lo que se congele o muera (motor, programador, ventana), y la imagen sigue saliendo aunque se cierre la ventana.
@@ -133,7 +127,7 @@ Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el moto
 - 🖥️ Salida a pantalla completa en cualquier monitor, atajo de salida de emergencia (`Ctrl+Alt+V`) e icono en la bandeja.
 - 🔊 Vúmetro y volumen reales del motor, dispositivo de audio del aire fijo (con aviso en rojo si falta) y salida privada de "escucha".
 - 💾 Todo lo que guardas se copia también a un archivo con respaldos automáticos, y se recupera si se borra la memoria del programa.
-- 📦 Instalador de Windows con términos y condiciones, elección de carpeta y arranque con Windows (ver [`v2/Instalador`](v2/Instalador)).
+- 📦 Instalador de Windows con términos y condiciones, elección de carpeta y arranque con Windows.
 
 **🆕 Novedades de la 2.1 a la 2.3**
 - 🖼️ **2.1:** icono del programa en el acceso directo del escritorio y en la barra de tareas.
@@ -143,11 +137,9 @@ Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el moto
 
 **🔜 Lo que falta** — mira la hoja de ruta más abajo.
 
-**🛠️ Cómo compilarla** — necesitas el [SDK de .NET 10](https://dotnet.microsoft.com/) y la versión 2.5.1 de CasparCG (se descarga de su página oficial; **no** se incluye aquí). La salida NDI necesita [NDI Tools](https://ndi.video/). Para armar el instalador además hace falta [Inno Setup 6](https://jrsoftware.org/isinfo.php): ejecuta `v2/Instalador/construir.ps1 -Motor "<ruta a CasparCG>"`.
-
 ### 🗺️ Próximas actualizaciones
 
-**✅ Ya hecho** *(en el prototipo de navegador y en las versiones nativas hasta la 2.3)*
+**✅ Ya hecho** *(hasta la versión 2.3)*
 - [x] ~~🎨 Temas de color: Día / Noche / Neutro (siempre con la paleta CaLabs) y un tema Personalizado con colores libres~~
 - [x] ~~🌍 Cambio de idioma (español / inglés)~~ — las pestañas Entradas y Actualizaciones siguen solo en español
 - [x] ~~📊 Vúmetro clásico verde-amarillo-rojo con escala en dB~~ — en la 2.0 lee el nivel real del motor
