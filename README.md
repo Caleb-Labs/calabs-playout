@@ -7,7 +7,7 @@
 **A modern TV playout system that runs in your browser.**
 *Un sistema de playout para televisión que funciona en el navegador.*
 
-🚧 `Native version 2.3 (CasparCG + NDI) · in development` 🚧
+`Native version 2.5 (CasparCG + NDI)`
 
 </div>
 
@@ -17,7 +17,7 @@
 
 CaLabs Playout is a **native Windows TV playout program**. A modern alternative to old, expensive and unintuitive broadcast software, ideal for people getting started in TV scheduling and media ingest.
 
-> ⚠️ **Language note:** the interface is available in **Spanish and English**. The newer **Inputs** and **Updates** tabs are still Spanish only; their translation is in progress. 🌍
+> 🌍 **Language note:** the interface is available in **Spanish and English**. Some messages (yt-dlp errors, release notes and a few Facebook / Telegram texts) are still Spanish only.
 
 ![On air](docs/01_on-air.png)
 
@@ -34,7 +34,7 @@ CaLabs Playout is a **native Windows TV playout program**. A modern alternative 
 
 ### 💿 Install
 Download the Windows installer (`CaLabs-Playout-X.Y-Setup.exe`) from [Releases](../../releases) and run it. It includes the requirements (VC++ and WebView2), asks for the install folder and offers optional Windows tweaks. Requires Windows 11 and a GPU with OpenGL 4.5; NDI output needs [NDI Tools](https://ndi.video/). Later versions update from inside the program.
-### 🧱 Native version 2.3 — CasparCG + NDI (in development)
+### 🧱 Native version 2.5 — CasparCG + NDI
 
 A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparCG 2.5** engine, with **NDI output**. This repository only publishes the installers, the update patches and the documentation.
 
@@ -55,13 +55,19 @@ A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparC
 - 🔄 **2.3 · Updates:** visible version number, **Check for updates** and **What's new** buttons, an amber notice when a new version exists (asks for confirmation, warns that the air is interrupted), verified download, backup and **automatic rollback** if the new version does not start. Every update is **signed** (ECDSA P-256) and the program rejects anything that fails verification.
 - 🧰 Installer with optional Windows tweaks (no sleep, no system sounds, no forced Windows Update restarts, no notifications; all reverted on uninstall) and bundled VC++ and WebView2.
 
+**🆕 What's new in 2.4 – 2.5**
+- 📲 **2.5 · Telegram alerts:** a message to your group when the channel goes into emergency, a window closes or the channel goes down, with an **"I've got it"** button and a reminder after 5 minutes if nobody answers. It also warns when the Air window or the control window closes (both reopen by themselves), when the playout is closed by hand or the PC shuts down, and when it starts after a power cut. The bot token is stored encrypted on the PC and is never published.
+- 📘 **2.5 · Facebook live:** the Inputs tab now takes live streams from Facebook. Facebook requires a signed-in session: sign in once from the built-in browser (best at the first installation, with an account just for the channel).
+- 🧰 **2.5 · Installer:** it no longer leaves the playout starting with Windows when that box is unticked, and it does not restart the PC by itself.
+- 🛑 **2.4:** Stop now works while the emergency loop is on air; the Log reads the real log file in real time; clips of 30 s or less go without logo, clock or lower third; the Inputs tab and updates can be shown in English.
+
 **🔜 What is still missing** — see the roadmap below.
 
 ### 🗺️ Roadmap
 
-**✅ Done** *(up to version 2.3)*
+**✅ Done** *(up to version 2.5)*
 - [x] ~~🎨 Color themes: Day / Night / Neutral (always built from the CaLabs palette) plus a Custom theme with free colors~~
-- [x] ~~🌍 Language switch (Spanish / English)~~ — the Inputs and Updates tabs are still Spanish only
+- [x] ~~🌍 Language switch (Spanish / English)~~ — including the Inputs and Updates tabs (2.4)
 - [x] ~~📊 Classic green-yellow-red level meter with dB scale~~ — in 2.0 it reads the real engine level
 - [x] ~~💾 Spot groups: see which videos each saved group contains and reload any of them~~
 - [x] ~~🔀 Smoother crossfade between videos~~ — in 2.0 the engine does an optional fade
@@ -74,13 +80,13 @@ A rewrite as a **native Windows program** (C# / .NET 10) on top of the **CasparC
 - [x] ~~🔄 "Check for updates" button and a "what's new" window~~ — 2.3, signed updates with rollback
 - [x] ~~📹 NDI input and web streams (YouTube / Facebook) with preview and a manual "Go live"~~ — 2.2, no automation during a live feed
 - [x] ~~📄 Schedule export to Excel and PDF~~ — PDF through the print view ("Save as PDF")
+- [x] ~~🛟 Warn and flag the failed source if the engine restarts during a live input; keep an interleaved ad break if the scheduler restarts~~ — 2.3
+- [x] ~~📲 Telegram alerts to a group, with an "I'll take it" button~~ — 2.5
+- [x] ~~📘 Facebook live input~~ — 2.5, with a signed-in session
 
 **🔜 Still to come**
-- [ ] 🌍 English translation of the Inputs and Updates tabs
-- [ ] 🧪 Real-world tests: the 2.2 → 2.3 update flow with a real download, recovery after a power cut, leaving live mode
-- [ ] 🛟 Warn and flag the failed source if the engine restarts during a live input; keep an interleaved ad break if the scheduler restarts
-- [ ] 📲 Telegram alerts to a group, with an "I'll take it" button
-- [ ] 🕵️ Optional black / silence watchdog
+- [ ] 🧪 Real-world tests: recovery after a power cut
+- [ ] ⚡ A lighter edition (**CaLabs Playout Lite**) for modest PCs
 - [ ] 📹 HDMI/USB capture cards and ATEM Mini *(waiting for real hardware)*
 - [ ] 🌐 Output to an external server (RTMP / SRT) and a clean extra output
 - [ ] 🧪 24-hour soak and stress tests
@@ -97,7 +103,7 @@ This project was **designed and directed by Caleb (CaLabs)** and **built with th
 
 CaLabs Playout es un **programa nativo de Windows para playout de televisión**. Una alternativa moderna a software de emisión antiguo, caro y poco intuitivo, ideal para personas que están entrando al mundo audiovisual en la programación e ingesta de material para TV.
 
-> ⚠️ **Nota de idioma:** la interfaz está en **español e inglés**. Las pestañas nuevas **Entradas** y **Actualizaciones** todavía están solo en español; su traducción está en curso. 🌍
+> 🌍 **Nota de idioma:** la interfaz está en **español e inglés**. Algunos mensajes (errores de yt-dlp, notas de versión y unos pocos textos de Facebook y Telegram) siguen solo en español.
 
 ### ✨ Qué hace hoy
 - 🗓️ Parrilla con contador de horas cargadas y duración meta libre
@@ -114,7 +120,7 @@ CaLabs Playout es un **programa nativo de Windows para playout de televisión**.
 
 ### 💿 Instalación
 Descarga el instalador de Windows (`CaLabs-Playout-X.Y-Setup.exe`) desde [Releases](../../releases) y ejecútalo. Incluye los requisitos (VC++ y WebView2), te deja elegir la carpeta y ofrece ajustes de Windows opcionales. Requiere Windows 11 y una GPU con OpenGL 4.5; la salida NDI necesita [NDI Tools](https://ndi.video/). Las versiones siguientes se actualizan desde dentro del programa.
-### 🧱 Versión nativa 2.3 — CasparCG + NDI (en desarrollo)
+### 🧱 Versión nativa 2.5 — CasparCG + NDI
 
 Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el motor **CasparCG 2.5**, con **salida NDI**. Este repositorio publica solo los instaladores, los parches de actualización y la documentación.
 
@@ -135,13 +141,19 @@ Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el moto
 - 🔄 **2.3 · Actualizaciones:** versión visible, botones **Buscar actualización** y **Novedades**, aviso ámbar cuando hay versión nueva (pide confirmación y avisa del corte del aire), descarga verificada, respaldo y **vuelta atrás automática** si la versión nueva no arranca. Cada actualización va **firmada** (ECDSA P-256) y el programa rechaza lo que no verifique.
 - 🧰 Instalador con ajustes de Windows opcionales (sin suspensión, sin sonidos, sin reinicios forzados de Windows Update, sin notificaciones; se revierten al desinstalar) y con VC++ y WebView2 incluidos.
 
+**🆕 Novedades de la 2.4 a la 2.5**
+- 📲 **2.5 · Avisos por Telegram:** un mensaje a tu grupo cuando el canal entra en emergencia, se cierra una ventana o el canal se cae, con botón **«Lo tomo yo»** y un recordatorio a los 5 minutos si nadie responde. También avisa cuando se cierra la ventana del Aire o la ventana de control (las dos se reabren solas), cuando el playout se cierra a mano o se apaga el PC, y cuando arranca tras un corte de luz. El token del bot se guarda cifrado en el PC y nunca se publica.
+- 📘 **2.5 · Facebook en vivo:** la pestaña Entradas ahora toma transmisiones en vivo de Facebook. Facebook exige una sesión iniciada: entra una vez desde el navegador integrado (mejor en la primera instalación, con una cuenta solo para el canal).
+- 🧰 **2.5 · Instalador:** ya no deja el playout arrancando con Windows cuando esa casilla está desmarcada, y no reinicia el PC por su cuenta.
+- 🛑 **2.4:** Parar funciona con la emergencia al aire; el Registro lee el archivo de registro en tiempo real; los videos de 30 s o menos salen sin logo, reloj ni zócalo; las pestañas Entradas y Actualizaciones se pueden ver en inglés.
+
 **🔜 Lo que falta** — mira la hoja de ruta más abajo.
 
 ### 🗺️ Próximas actualizaciones
 
-**✅ Ya hecho** *(hasta la versión 2.3)*
+**✅ Ya hecho** *(hasta la versión 2.5)*
 - [x] ~~🎨 Temas de color: Día / Noche / Neutro (siempre con la paleta CaLabs) y un tema Personalizado con colores libres~~
-- [x] ~~🌍 Cambio de idioma (español / inglés)~~ — las pestañas Entradas y Actualizaciones siguen solo en español
+- [x] ~~🌍 Cambio de idioma (español / inglés)~~ — incluidas las pestañas Entradas y Actualizaciones (2.4)
 - [x] ~~📊 Vúmetro clásico verde-amarillo-rojo con escala en dB~~ — en la 2.0 lee el nivel real del motor
 - [x] ~~💾 Grupos de spots: ver qué videos contiene cada grupo guardado y volver a cargarlos~~
 - [x] ~~🔀 Fundido más suave entre videos~~ — en la 2.0 lo hace el motor, de forma opcional
@@ -154,13 +166,13 @@ Una reescritura como **programa nativo de Windows** (C# / .NET 10) sobre el moto
 - [x] ~~🔄 Botón "Buscar actualización" y ventana de "novedades"~~ — 2.3, actualizaciones firmadas con vuelta atrás
 - [x] ~~📹 Entrada NDI y transmisiones web (YouTube / Facebook) con vista previa y un "En directo" manual~~ — 2.2, sin automatización mientras hay señal en vivo
 - [x] ~~📄 Exportar la parrilla a Excel y PDF~~ — el PDF sale por la vista de impresión ("Guardar como PDF")
+- [x] ~~🛟 Avisar y marcar la fuente caída si el motor se reinicia con un directo al aire; no perder la tanda intercalada si el programador se reinicia~~ — 2.3
+- [x] ~~📲 Avisos por Telegram a un grupo, con botón "Lo tomo yo"~~ — 2.5
+- [x] ~~📘 Entrada de Facebook en vivo~~ — 2.5, con una sesión iniciada
 
 **🔜 Lo que falta**
-- [ ] 🌍 Traducción al inglés de las pestañas Entradas y Actualizaciones
-- [ ] 🧪 Pruebas reales: flujo de actualización 2.2 → 2.3 con descarga real, recuperación tras un corte de luz y salida del directo
-- [ ] 🛟 Avisar y marcar la fuente caída si el motor se reinicia con un directo al aire; no perder la tanda intercalada si el programador se reinicia
-- [ ] 📲 Avisos por Telegram a un grupo, con botón "Lo tomo yo"
-- [ ] 🕵️ Vigilante opcional de negro y silencio
+- [ ] 🧪 Pruebas reales: recuperación tras un corte de luz
+- [ ] ⚡ Una edición más liviana (**CaLabs Playout Lite**) para PCs modestos
 - [ ] 📹 Capturadoras HDMI/USB y ATEM Mini *(esperan equipos reales)*
 - [ ] 🌐 Salida a un servidor externo (RTMP / SRT) y salida limpia adicional
 - [ ] 🧪 Pruebas de 24 horas y de estrés
